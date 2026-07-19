@@ -15,10 +15,12 @@ Discovery:      https://visiblefront.com/.well-known/ai-actions.json
 ## Breaking change (2026-07-19)
 
 `submit_review` now requires a `consent` field — a boolean, strictly `true` (the string
-`"true"` is rejected). Missing or `false` returns `consent_missing`. Set it only after your
-human has explicitly agreed to their review being published publicly under their first name +
-last initial — ask, never assume. Consent is recorded. Callers built against an earlier version
-of this README will get `consent_missing` until they add the field.
+`"true"` is rejected). Missing or `false` returns `consent_missing`. Set it only after the
+customer has explicitly agreed to their review being published publicly under their first name +
+last initial — ask, never assume. Consent is recorded. (Customers also receive their own emailed
+review link after each completed visit — this tool is the relay for when they'd rather tell you;
+it is never the only path.) Callers built against an earlier version of this README will get
+`consent_missing` until they add the field.
 
 ## What your assistant can do with it
 
@@ -30,7 +32,7 @@ of this README will get `consent_missing` until they add the field.
 | `check_availability` | open slots: opening hours ∖ existing bookings ∖ live calendar busy-times |
 | `request_booking` | place a booking **request** — the business confirms every request |
 | `check_booking` | status of a request by reference |
-| `submit_review` | relay a customer's own review after a verified visit, with the human's explicit, recorded consent to publish (agents never author sentiment) |
+| `submit_review` | relay a customer's own review after a verified visit, with their explicit, recorded consent to publish (agents never author sentiment) |
 | `list_markets` | coverage discovery — the countries, cities and verticals the index covers, with freshness and a published / data_only status per market |
 | `get_collection` | the ranked collection for one market — the same JSON the public collection page serves (scores, per-engine signals, `/b` links, bookable flags) |
 
